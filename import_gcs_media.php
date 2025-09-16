@@ -28,13 +28,11 @@ $PROJECT_ID = 'test-pj-20250522';
 
 // .env を読み込み
 $env = parse_ini_file(__DIR__ . '/.env');
-$DB_USER = $env['DB_USER'];
+$DB_USER = 'sisiwaka_editor';
 $DB_PASS = $env['DB_PASS'];
-$DB_NAME = $env['DB_NAME'];
-$DB_HOST = $env['DB_HOST'];
 
 // MariaDB 接続情報（必要に応じて調整）
-$DB_DSN = "mysql:host={$DB_HOST};dbname={$DB_NAME};charset=utf8mb4";
+$DB_DSN = "mysql:host=localhost;dbname=sisiwaka_touen;charset=utf8mb4";
 
 // 小ネタ：例外は即表示して終了（本番はロギング推奨）
 set_exception_handler(function ($e) {
