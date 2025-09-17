@@ -26,7 +26,8 @@ use Google\Cloud\Storage\StorageClient;
 $GCS_BUCKET = 'sisiwaka-touen-medias';
 $PROJECT_ID = 'test-pj-20250522';
 $DB_USER = 'sisiwaka_editor';
-$DB_PASS = getenv('DB_EDITOR_PW');
+$env = parse_ini_file(__DIR__ . '/.env');
+$DB_PASS = $env['DB_EDITOR_PW'];
 if ($DB_PASS === false) {
     throw new RuntimeException('DB_EDITOR_PW is not set in environment');
 }
