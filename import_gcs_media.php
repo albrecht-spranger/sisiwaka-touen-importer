@@ -25,11 +25,11 @@ use Google\Cloud\Storage\StorageClient;
 // ======== 設定 =========
 $GCS_BUCKET = 'sisiwaka-touen-medias';
 $PROJECT_ID = 'test-pj-20250522';
-
-// .env を読み込み
-$env = parse_ini_file(__DIR__ . '/.env');
 $DB_USER = 'sisiwaka_editor';
-$DB_PASS = $env['DB_PASS'];
+$DB_PASS = getenv('DB_EDITOR_PW');
+if ($DB_PASS === false) {
+    throw new RuntimeException('DB_EDITOR_PW is not set in environment');
+}
 
 // MariaDB 接続情報（必要に応じて調整）
 $DB_DSN = "mysql:host=localhost;dbname=sisiwaka_touen;charset=utf8mb4";
